@@ -1,0 +1,73 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+
+<dom-module id="todo-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: "element-name",
+      properties : {
+        user : {
+          type : String,
+          value : ""
+        },
+        task : {
+          type : String,
+          value : "Hello!"
+        },
+        rid: {
+          type : Number,
+          value : -1
+        },
+        time: {
+          type : String,
+          value : new Date().toLocaleString()
+        },
+        completed : {
+          type : Boolean,
+          value : false,
+          observer : 'compChanged'
+        }
+        editing : {
+          type : Boolean,
+          value : false
+        }
+      },
+      compChanged : function(e){
+        if(e){ this.fire('complete', this);}
+      },
+      doEdit : function(e){
+        this.editing = !this.editing;
+      },
+      ready : function(e){
+
+      }
+    });
+  })();
+  </script>
+</dom-module>
